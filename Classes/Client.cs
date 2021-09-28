@@ -27,9 +27,24 @@ namespace Classes
 
         public static void RecordClient(Client client)
         {
-            Console.WriteLine("Recording Client " + client.name);
+            //DONE: write client into a file - HIGH MEMORY USAGE
+            List<Client> clients = GetClients();
 
-            //TODO: write client into a file
+            clients.Add(client);
+
+            string filePath = getFilePath() + "clients.txt";
+
+            if (File.Exists(filePath))
+            {
+                string content = "name;phone;cpf;";
+                
+                foreach(Client c in clients)
+                {
+                    content += "\n" + c.name + ";" + c.phone + ";" + c.cpf + ";";
+                }
+
+                File.WriteAllText(filePath, content);
+            }
         }
 
         public static void RecordClient()
@@ -44,11 +59,9 @@ namespace Classes
 
         public static List<Client> GetClients()
         {
-            Console.WriteLine("Reading clients...");
             var clients = new List<Client>();
             string filePath = getFilePath() + "clients.txt";
 
-            //DOING: recover clients from file
             if (File.Exists(filePath))
             {
                 using (StreamReader file = File.OpenText(filePath))
