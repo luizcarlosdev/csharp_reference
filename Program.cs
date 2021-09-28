@@ -54,7 +54,7 @@ namespace csharp_reference
 
         private static void ReadFiles(int fileNumber)
         {
-            string filePath = @Environment.CurrentDirectory + "\\file" + fileNumber+ ".txt";
+            string filePath = @Environment.CurrentDirectory + "\\..\\..\\file" + fileNumber+ ".txt";
 
             if (File.Exists(filePath))
             {
@@ -69,7 +69,7 @@ namespace csharp_reference
                 }
             }
 
-            string filePath2 = @Environment.CurrentDirectory + "\\file" + (fileNumber++) + ".txt";
+            string filePath2 = @Environment.CurrentDirectory + "\\..\\..\\file" + (fileNumber++) + ".txt";
 
             if (File.Exists(filePath2))
             {
