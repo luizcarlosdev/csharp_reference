@@ -11,14 +11,6 @@ namespace Classes
         private string phone;
         private string cpf;
 
-        public Client() { }
-
-        public Client(string name, string phone, string cpf) {
-            this.name = name;
-            this.phone = phone;
-            this.cpf = cpf;
-        }
-
         public static Client CreateClient()
         {
             Client client = new Client();
@@ -73,7 +65,14 @@ namespace Classes
                         }
 
                         var actualClient = row.Split(';');
-                        Client client = new Client(actualClient[0], actualClient[1], actualClient[2]);
+                        
+                        // Instantiate a new Client WITHOUT CONSTRUCTOR, using named args
+                        Client client = new Client
+                        {
+                            name = actualClient[0],
+                            phone = actualClient[1],
+                            cpf = actualClient[2]
+                        };
 
                         clients.Add(client);
                     }
