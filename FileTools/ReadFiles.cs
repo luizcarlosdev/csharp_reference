@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 
 namespace FileTools
 {
     class ReadFiles
     {
+        private static string getFilePath()
+        {
+            return ConfigurationManager.AppSettings["filePath"];
+        }
+
         public static void ShowReadFiles(int fileNumber)
         {
-            string filePath = @Environment.CurrentDirectory + "\\..\\..\\file" + fileNumber + ".txt";
+            string filePath = getFilePath() + "file" + fileNumber + ".txt";
 
             if (File.Exists(filePath))
             {
@@ -22,7 +28,7 @@ namespace FileTools
                 }
             }
 
-            string filePath2 = @Environment.CurrentDirectory + "\\..\\..\\file" + (fileNumber++) + ".txt";
+            string filePath2 = getFilePath() + "file" + (fileNumber++) + ".txt";
 
             if (File.Exists(filePath2))
             {
