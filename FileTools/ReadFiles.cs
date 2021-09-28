@@ -8,7 +8,7 @@ namespace FileTools
     {
         private static string getFilePath()
         {
-            return ConfigurationManager.AppSettings["filePath"];
+            return ConfigurationManager.AppSettings["TextFilePath"];
         }
 
         public static void ShowReadFiles(int fileNumber)

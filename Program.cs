@@ -1,7 +1,9 @@
 ﻿using Calculus;
+using Classes;
 using FileTools;
-using System;
 using UI;
+using System;
+using System.Collections.Generic;
 
 namespace csharp_reference
 {
@@ -29,13 +31,20 @@ namespace csharp_reference
                     case 3:
                         Average.ShowAverageCalculator();
                         break;
+                    case 4:
+                        Client.RecordClient();
+                        break;
+                    case 5:
+                        Client.ShowClients();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option... Please try again!");
+                        break;
                 }
 
                 Console.WriteLine("\nPress ENTER to exit...");
                 Console.ReadLine();
             }
-
         }
-
     }
 }
