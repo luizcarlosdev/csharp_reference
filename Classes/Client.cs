@@ -27,23 +27,21 @@ namespace Classes
 
         public static void RecordClient(Client client)
         {
-            //DONE: write client into a file - HIGH MEMORY USAGE
+            //DONE: write client into a file - LOW MEMORY USAGE
             List<Client> clients = GetClients();
 
             clients.Add(client);
 
-            string filePath = getFilePath() + "clients.txt";
-
-            if (File.Exists(filePath))
+            if (File.Exists(getFilePath()))
             {
-                string content = "name;phone;cpf;";
+                StreamWriter sw = new StreamWriter(getFilePath());
+                sw.WriteLine("name;phone;cpf;");
                 
                 foreach(Client c in clients)
                 {
-                    content += "\n" + c.name + ";" + c.phone + ";" + c.cpf + ";";
+                    sw.WriteLine(c.name + ";" + c.phone + ";" + c.cpf + ";");
                 }
-
-                File.WriteAllText(filePath, content);
+                sw.Close();
             }
         }
 
@@ -54,19 +52,19 @@ namespace Classes
 
         private static string getFilePath()
         {
-            return ConfigurationManager.AppSettings["ClientsDatabasePath"];
+            return ConfigurationManager.AppSettings["ClientsDatabasePath"] + "clients.txt";
         }
 
         public static List<Client> GetClients()
         {
             var clients = new List<Client>();
-            string filePath = getFilePath() + "clients.txt";
-
-            if (File.Exists(filePath))
+            Console.WriteLine("Getting Clients from " + getFilePath());
+            
+            if (File.Exists(getFilePath()))
             {
-                using (StreamReader file = File.OpenText(filePath))
+                using (StreamReader file = File.OpenText(getFilePath()))
                 {
-                    Console.WriteLine("\nFile: " + filePath);
+                    Console.WriteLine("\nFile: " + getFilePath());
                     string row;
                     int i = 0;
                     while ((row = file.ReadLine()) != null)
