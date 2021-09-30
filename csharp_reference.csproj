@@ -46,7 +46,10 @@
   <ItemGroup>
     <Compile Include="Calculus\Average.cs" />
     <Compile Include="Calculus\TimesTable.cs" />
+    <Compile Include="Classes\Base.cs" />
     <Compile Include="Classes\Client.cs" />
+    <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="FileTools\ReadFiles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,10 +1,10 @@
 ﻿namespace Classes
 {
-    public class Client : Base
+    public class User : Base
     {
-        public Client(){ }
+        public User() { }
 
-        public Client(string name, string phone, string cpf)
+        public User(string name, string phone, string cpf)
         {
             this.setName(name);
             this.setPhone(phone);

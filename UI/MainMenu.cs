@@ -13,6 +13,7 @@ namespace UI
             Console.WriteLine("# 0 - Exit program                        1 - Read Files                       #");
             Console.WriteLine("# 2 - Times table                         3 - Average calculator               #");
             Console.WriteLine("# 4 - Create and Record Client            5 - List Clients                     #");
+            Console.WriteLine("# 6 - Create and Record User              7 - List Users                       #");
             Console.WriteLine("################################################################################");
             Console.Write("Please type the desired program number: ");
             return int.Parse(Console.ReadLine());

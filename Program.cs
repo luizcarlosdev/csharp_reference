@@ -32,10 +32,18 @@ namespace csharp_reference
                         Average.ShowAverageCalculator();
                         break;
                     case 4:
-                        Client.RecordClient();
+                        new Client().CreateAndRecord();
                         break;
                     case 5:
-                        Client.ShowClients();
+                        var clients = new Client().Read();
+                        foreach(Base client in clients) { Console.WriteLine(client.ToString()); }
+                        break;
+                    case 6:
+                        //User.CreateAndRecordUser();
+                        break;
+                    case 7:
+                        var users = new User().Read();
+                        foreach (Base user in users) { Console.WriteLine(user.ToString()); }
                         break;
                     default:
                         Console.WriteLine("Invalid option... Please try again!");
