@@ -7,7 +7,7 @@ namespace Classes
 {
     public class Base : IPerson
     {
-        
+
         public Base() { }
 
         public Base(string name, string phone, string cpf)
@@ -16,7 +16,7 @@ namespace Classes
             this.phone = phone;
             this.cpf = cpf;
         }
-        
+
         private string name;
         private string phone;
         private string cpf;
@@ -50,7 +50,7 @@ namespace Classes
                 {
                     string row;
                     int i = 0;
-                    while((row = file.ReadLine()) != null)
+                    while ((row = file.ReadLine()) != null)
                     {
                         i++;
                         if (i == 1) continue;
@@ -63,22 +63,20 @@ namespace Classes
             }
             return data;
         }
-        
+
         public void Record()
         {
             var data = Read();
             data.Add(this);
-            if (File.Exists(getFilePath()))
+
+            StreamWriter sw = new StreamWriter(getFilePath());
+            sw.WriteLine("name;phone;cpf;");
+            foreach (Base b in data)
             {
-                StreamWriter sw = new StreamWriter(getFilePath());
-                sw.WriteLine("name;phone;cpf;");
-                foreach(Base b in data)
-                {
-                    var row = b.name + ";" + b.phone + ";" + b.cpf + ";";
-                    sw.WriteLine(row);
-                }
-                sw.Close();
+                var row = b.name + ";" + b.phone + ";" + b.cpf + ";";
+                sw.WriteLine(row);
             }
+            sw.Close();
         }
 
         public void CreateAndRecord()
@@ -91,7 +89,7 @@ namespace Classes
         {
             return this.name;
         }
-        
+
         public void setName(string name)
         {
             this.name = name;
