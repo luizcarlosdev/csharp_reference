@@ -39,7 +39,7 @@ namespace csharp_reference
                         foreach(Base client in clients) { Console.WriteLine(client.ToString()); }
                         break;
                     case 6:
-                        //User.CreateAndRecordUser();
+                        new User().CreateAndRecord();
                         break;
                     case 7:
                         var users = new User().Read();

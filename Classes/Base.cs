@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Base : Person
+    public class Base : IPerson
     {
         
         public Base() { }
@@ -26,26 +23,27 @@ namespace Classes
 
         private string getFilePath()
         {
-            return @ConfigurationManager.AppSettings["BaseDirPath"] + this.GetType().Name.ToLower() + "s.csv";
+            return ConfigurationManager.AppSettings["BaseDirPath"] + this.GetType().Name.ToLower() + "s.csv";
         }
 
         public Base Create()
         {
-            Base b = new Base();
+            var b = Activator.CreateInstance(this.GetType());
 
             Console.Write("Name: ");
-            b.setName(Console.ReadLine());
+            this.setName(Console.ReadLine());
             Console.Write("Phone: ");
-            b.setPhone(Console.ReadLine());
+            this.setPhone(Console.ReadLine());
             Console.Write("CPF: ");
-            b.setCpf(Console.ReadLine());
+            this.setCpf(Console.ReadLine());
 
-            return b;
+            return this;
         }
 
-        public List<Base> Read()
+        public List<IPerson> Read()
         {
-            var data = new List<Base>();
+            var data = new List<IPerson>();
+            Console.WriteLine("READING FROM " + getFilePath());
             if (File.Exists(getFilePath()))
             {
                 using (StreamReader file = File.OpenText(getFilePath()))
@@ -66,10 +64,9 @@ namespace Classes
             return data;
         }
         
-        //FIX
         public void Record()
         {
-            var data = new Base().Read();
+            var data = Read();
             data.Add(this);
             if (File.Exists(getFilePath()))
             {
@@ -86,8 +83,8 @@ namespace Classes
 
         public void CreateAndRecord()
         {
-            Base b = Create();
-            b.Record();
+            this.Create();
+            this.Record();
         }
 
         public string getName()
