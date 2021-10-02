@@ -17,9 +17,9 @@ namespace Classes
             this.cpf = cpf;
         }
 
-        private string name;
-        private string phone;
-        private string cpf;
+        public string name { get; set; }
+        public string phone { get; set; }
+        public string cpf { get; set; }
 
         private string getFilePath()
         {
@@ -31,11 +31,11 @@ namespace Classes
             var b = Activator.CreateInstance(this.GetType());
 
             Console.Write("Name: ");
-            this.setName(Console.ReadLine());
+            this.name = Console.ReadLine();
             Console.Write("Phone: ");
-            this.setPhone(Console.ReadLine());
+            this.phone = Console.ReadLine();
             Console.Write("CPF: ");
-            this.setCpf(Console.ReadLine());
+            this.cpf = Console.ReadLine();
 
             return this;
         }
@@ -83,36 +83,6 @@ namespace Classes
         {
             this.Create();
             this.Record();
-        }
-
-        public string getName()
-        {
-            return this.name;
-        }
-
-        public void setName(string name)
-        {
-            this.name = name;
-        }
-
-        public string getPhone()
-        {
-            return this.phone;
-        }
-
-        public void setPhone(string phone)
-        {
-            this.phone = phone;
-        }
-
-        public string getCpf()
-        {
-            return this.cpf;
-        }
-
-        public void setCpf(string cpf)
-        {
-            this.cpf = cpf;
         }
 
         public override string ToString()

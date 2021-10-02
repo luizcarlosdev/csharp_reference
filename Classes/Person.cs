@@ -9,8 +9,5 @@ namespace Classes
     public interface IPerson
     {
         void Record();
-        void setName(string name);
-        void setPhone(string phone);
-        void setCpf(string cpf);
     }
 }

@@ -4,11 +4,6 @@
     {
         public User() { }
 
-        public User(string name, string phone, string cpf)
-        {
-            this.setName(name);
-            this.setPhone(phone);
-            this.setCpf(cpf);
-        }
+        public User(string name, string phone, string cpf) { }
     }
 }
